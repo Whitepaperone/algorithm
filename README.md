@@ -1,6 +1,7 @@
 # algorithm
 algorithm repo
 ---
+```
 import java.util.Scanner;
 public class test{
 
@@ -13,3 +14,4 @@ public class test{
         System.out.println(a+b);
     }
 }
+```
