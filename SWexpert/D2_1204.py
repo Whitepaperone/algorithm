@@ -13,7 +13,7 @@ for test_case in range(1, T + 1):
             numDict[num]+=1
         else:
             numDict[num]=1
-    print(f'{test_case}',max(numDict,key=numDict.get))
+    print(f'#{test_case}',max(numDict,key=numDict.get))
 
     # ///////////////////////////////////////////////////////////////////////////////////
     '''
