@@ -4,6 +4,8 @@ def solve(k, r, c, d):
         if maxV < k:
             maxV = k
         return
+    if d==2 and maxV>=k*2:
+        return
     if 0>r or r >= N or 0>c or c >= N or arr[r][c] in result[:k]:
         # r하고 c가 범위를 벗어나거나 같은 디저트면:
         return
