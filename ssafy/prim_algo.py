@@ -20,7 +20,7 @@ def prim():
     P = [10000] * (N + 1) #end
     D[0] =0
     while len(U) < (N + 1):
-        # curV=U에 D중 가장 작은 값을 가진 정점 선택
+        # curV=U에 D중 가장 작은 값을 가진 정점 선택/ D에서 최소를 구한다. (단 U에 포함되지 않은 것을 대상으로)
         minV = 10000
         for i in range(N + 1):
             if i in U: continue
@@ -29,7 +29,7 @@ def prim():
                 curV = i
 
         U.append(curV)
-        # curV하고 연결된 정점들의 D값을 최선으로 바꿔준다
+        # curV하고 연결된 정점들의 D값을 최선으로 바꿔준다/ i와 연결된 정점들의 D를 수정
         for i in range(N + 1):
             if i in U: continue
             if G[curV][i] and D[i] > G[curV][i]:
@@ -46,4 +46,3 @@ for i in range(E):
     G[n2][n1] = w
 # print(G)
 prim()
-dijk()
