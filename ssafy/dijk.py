@@ -40,5 +40,5 @@ G = [[0] * (N + 1) for _ in range(N + 1)]
 for i in range(E):
     n1, n2, w = map(int, input().split())
     G[n1][n2] = w
-# print(G)
+print(G)
 dijk()

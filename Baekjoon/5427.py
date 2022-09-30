@@ -1,3 +1,4 @@
+from collections import deque
 def bfs():
     global time
     while q:
@@ -26,7 +27,8 @@ def bfs2(y, x, time):
                 if type(visited[nY][nX]) == int:
                     if visited[nY][nX] > time:
                         q.append((nY, nX, time + 1))
-                        visited[nY][nX] = '@' * (time + 1)
+                        visited[nY][nX] = 10 * (time + 1)
+    return time
 
 
 TC = int(input())
@@ -53,20 +55,16 @@ for test_case in range(1, TC + 1):
     for i in range(M + 2):
         if i == 0 or i == M + 1:
             for j in range(N + 2):
-                if type(visited[i][j]) == int:
-                    continue
-                else:
-                    time2 = visited[i][j].count('@')
-                    if time2 < minV:
-                        minV = time2
+                if visited[i][j]%10:
+                    time = visited[i][j]//10
+                    if time < minV:
+                        minV = time
         else:
             for j in [0, N + 1]:
-                if type(visited[i][j]) == int:
-                    continue
-                else:
-                    time2 = visited[i][j].count('@')
-                    if time2 < minV:
-                        minV = time2
+                if visited[i][j]%10:
+                    time = visited[i][j]//10
+                    if time < minV:
+                        minV = time
     if time == 0:
         minV = 'IMPOSSIBLE'
     print(minV)
