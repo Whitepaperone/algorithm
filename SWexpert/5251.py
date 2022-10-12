@@ -32,13 +32,15 @@ def dijk():
             if G[curV][i] and D[i] > D[curV]+G[curV][i]:
                 D[i] = D[curV]+G[curV][i]
                 P[i]=curV
-    print(U,D, P)
+    return D
 
-
-N, E = map(int, input().split())
-G = [[0] * (N + 1) for _ in range(N + 1)]
-for i in range(E):
-    n1, n2, w = map(int, input().split())
-    G[n1][n2] = w
-print(G)
-dijk()
+TC=int(input())
+for test_case in range(1,TC+1):
+    N, E = map(int, input().split())
+    G = [[0] * (N + 1) for _ in range(N + 1)]
+    for i in range(E):
+        n1, n2, w = map(int, input().split())
+        G[n1][n2] = w
+    # print(G)
+    D= dijk()
+    print(f'{test_case}',D[N])
