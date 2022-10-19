@@ -2,21 +2,21 @@ from pprint import pprint
 def solve(r, c, d):
     global res
     res += 1
-    arr[r][c] = 1
+    arr[r][c] = res
     pprint(arr)
     for i in range(4, 0, -1):
-        tmp = (d + i ) % 4
-        print(d,tmp)
+        tmp = (d + (i-1)) % 4
         di, dj = dir[tmp]
         newR = r + di
         newC = c + dj
-        if 0 <= newR < M and 0 <= newC < N and arr[newR][newC] != 1:
+        print(newR,newC,r,c)
+        if 0 <= newR < M and 0 <= newC < N and arr[newR][newC] == 0:
             solve(newR, newC, tmp)
             return
-    dr, dc = dir[(tmp + 1) % 4]
+    dr, dc = dir[(tmp - 1) % 4]
     newR = r - dr
     newC = r - dc
-    if 0 <= newR < M and 0 <= newC < N and arr[newR][newC] != 1:
+    if 0 <= newR < M and 0 <= newC < N and arr[newR][newC] == 0:
         solve(newR, newC, tmp)
         return
     return
