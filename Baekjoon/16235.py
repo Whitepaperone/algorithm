@@ -4,14 +4,15 @@ def spring(x, y):
         tree[x][y].sort()
         index = []
         for i in range(len(tree[x][y])):
-            ground[x][y] -= tree[x][y][i]
-            tree[x][y][i]+=1
-            if ground[x][y] < 0:
-                ground[x][y] += tree[x][y][i]
-                ground[x][y] += tree[x][y][i] // 2
+            if ground[x][y]-tree[x][y][i] < 0:
                 index.append(i)
+                continue
+            ground[x][y]-=tree[x][y][i]
+            tree[x][y][i]+=1
         for i in index:
-            tree[x][y].pop(index[0])
+            ground[x][y] += tree[x][y][i] // 2
+        for i in index:
+            tree[x][y].pop()
 
 
 def fall(x, y):
@@ -52,8 +53,9 @@ for k in range(K):
     for i in range(N):
         for j in range(N):
             fall(i,j)
-    pprint(tree)
     winter()
+    pprint(ground)
+
 for i in range(N):
     for j in range(N):
         if tree[i][j]:
